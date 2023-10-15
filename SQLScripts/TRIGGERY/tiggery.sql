@@ -1,0 +1,43 @@
+USE [Test]
+GO
+CREATE TRIGGER dobry_pesel
+ON dbo.Klient 
+AFTER INSERT 
+AS
+IF (SELECT len(pesel) FROM inserted)=11 AND (SELECT dbo.sprawdz(pesel) from inserted)=1  RETURN 
+IF (SELECT len(pesel) FROM inserted)=11 AND (SELECT dbo.sprawdz(pesel) from inserted)=0
+BEGIN
+RAISERROR ('WSTAWIASZ INNE ZNAKI NIZ CYFRY',16,1)
+ROLLBACK TRANSACTION
+RETURN
+END
+IF (SELECT len(pesel) FROM inserted)<11
+BEGIN 
+RAISERROR ('ZLY PESEL',16,1)
+ROLLBACK TRANSACTION
+RETURN
+END
+GO
+CREATE TRIGGER wojewodztwo_insert
+ON DBO.WOJEWODZTWO
+AFTER INSERT,UPDATE 
+AS
+BEGIN
+RAISERROR ('W POLSCE JEST TYLKO 16 WOJEWODZTW',16,1)
+ROLLBACK TRANSACTION
+RETURN
+END
+GO
+CREATE TRIGGER compare_date
+ON DBO.REZERWACJA
+AFTER INSERT,UPDATE
+AS 
+IF (SELECT data_zameldowania from inserted)<(SELECT data_wymeldowania from inserted)
+RETURN
+IF (SELECT data_zameldowania from inserted)>(SELECT data_wymeldowania from inserted) 
+OR (SELECT data_zameldowania from inserted)=(SELECT data_wymeldowania from inserted) 
+BEGIN 
+RAISERROR('DATA ZAMELDOWANIA NIE MOZE BYC POZNIEJSZA NIZ DATA WYMELDOWANIA LUB CHCESZ ZAREZERWOWAC POKOJ NA MNIEJ NIZ DOBE',16,1)
+ROLLBACK TRANSACTION
+END
+GO
