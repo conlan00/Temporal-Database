@@ -12,7 +12,7 @@ Spis treści
 1. Problem biznesowy
 Wybranym problemem biznesowym jest „Rezerwacja pokoi w hotelach”. Projektując model bazy danych szczególną uwage zwrociłem na table : Klient, Rezerwacja. Na przykładzie tych tabel będę starał się zaprezentować możliwości, zalety, zastosowanie „system-versioned tables”, czyli tabel temporalnych, przechowujących znaczniki czasu. Model biznesowy możemy porównać do serwisu internetowego, który udostępnia nam możliwość złożenia rezerwacji w hotelu. Przykładem takiego serwisu może być booking.com. Najistotniejsze tabele, przy pomocy, których pokażę temporalność zawierają dane o kliencie tzn. takie dane, które opisują użytkownika w internecie, który po założeniu konta chce złożyć rezerwacje oraz rezerwacje, które mogą być w różnym stanie. Jak wiadomo, dane użytkowników, jak i rezerwacji w czasie mogą się zmieniać więc warto przechowywać takie dane na temat klientów i rezerwacji, aby zastosować je w różnych celach biznesowych.
 2. Model relacyjny problemu – forma graficzna
- ![image](https://github.com/conlan00/Gym-Database/assets/104897926/7dee1997-5967-408a-8900-0c0d6f430b25)
+![image](https://github.com/conlan00/Temporal-Database/assets/104897926/aa3cc6b3-a7b1-4845-beac-14d507a395ce)
 3. Krótki opis modelu
 Graficzne przedstawienie bazy danych zostało przygotowane przy pomocy programu ORACLE DATA MODELER. W modelu bazy danych tabele oznaczone literką T (różowe) są temporalne, tzn. tworzą się do nich takie same tabele, które przechowują historię. Znaczniki czasu oznaczyłem tutaj jako TIMESTAMP. Na podstawie powyższego modelu przedstawię możliwości i działanie jakie udostępniają nam temporalne bazy danych w MSSQL.
 4. Funkcje
