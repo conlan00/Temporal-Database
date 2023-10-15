@@ -1,5 +1,4 @@
 # Temporal-Database
-# Gym-Database
 
 Spis treści
 1. Problem biznesowy 
