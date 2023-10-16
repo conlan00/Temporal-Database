@@ -16,7 +16,8 @@ mogą się zmieniać więc warto przechowywać takie dane na temat klientów i r
 
 2. Model relacyjny problemu – forma graficzna
 
-![image](https://github.com/conlan00/Temporal-Database/assets/104897926/aa3cc6b3-a7b1-4845-beac-14d507a395ce)
+![Zrzut ekranu 2023-10-16 215154](https://github.com/conlan00/Temporal-Database/assets/104897926/355389e6-04dd-497d-969e-c405bfe4f86e)
+
 3. Krótki opis modelu
 
 Graficzne przedstawienie bazy danych zostało przygotowane przy pomocy programu ORACLE DATA MODELER. W modelu bazy danych tabele oznaczone literką T (różowe) są temporalne, tzn. tworzą się do nich takie same tabele, które przechowują historię. Znaczniki czasu oznaczyłem tutaj jako TIMESTAMP. Na podstawie powyższego modelu przedstawię możliwości i działanie jakie udostępniają nam temporalne bazy danych w MSSQL.
